@@ -1,2 +1,4 @@
-API rest frameword 
-create banch pucnoob and test commit
+- API rest frameword 
+- Create banch pucnoob and test commit
+- Tích hợp Swagger để viết document cho API 
+- Tích hợp debug toolbar app để đo hiệu suất truy vấn của django app ( python )

@@ -16,6 +16,9 @@ from rest_framework.parsers import MultiPartParser
 from .models import Course, Lesson, User
 from .serializers import CourseSerializers, LessonSerializers ,UserSerializers
 
+# swagger drf-yasg framework 
+from drf_yasg.utils import swagger_auto_schema
+
 
 # Create your views here.
 class CourseViewSet(viewsets.ModelViewSet):
@@ -33,7 +36,7 @@ class CourseViewSet(viewsets.ModelViewSet):
     # PUT ()      -> cập nhật khóa học 
     # DELETE      -> xóa khóa học 
 
-class UserViewSet(viewsets.ViewSet,generics.CreateAPIView,generics.RetrieveAPIView):
+class UserViewSet(viewsets.ViewSet,generics.CreateAPIView,generics.RetrieveAPIView,generics.UpdateAPIView):
     queryset = User.objects.filter(is_active = True)
     serializer_class =UserSerializers
     parser_classes =[MultiPartParser,] 
@@ -42,6 +45,12 @@ class LessonViewSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.filter(active = True)
     serializer_class = LessonSerializers
     print('lesson view set')
+    
+    @swagger_auto_schema(operation_description="This method do hide lesson by set False value to active", responses={
+        status.HTTP_200_OK: LessonSerializers()
+        }
+    )
+
 
     @action(methods=['post'] ,detail=True,url_path='hide-lesson',url_name='hide-lesson')
     def hide_lesson(self,request,pk):
