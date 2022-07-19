@@ -24,7 +24,7 @@ from drf_yasg.utils import swagger_auto_schema
 class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.filter(active = True)
     serializer_class = CourseSerializers 
-    permission_classes = [permissions.IsAuthenticated]
+    #permission_classes = [permissions.IsAuthenticated]
     
     # def get_permissions(self):
     #     if self.action == 'list' : 
