@@ -36,7 +36,7 @@ class CourseViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ViewSet,generics.CreateAPIView,generics.RetrieveAPIView):
     queryset = User.objects.filter(is_active = True)
     serializer_class =UserSerializers
-    parser_classes =[MultiPartParser, ]
+    parser_classes =[MultiPartParser,] 
 
 class LessonViewSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.filter(active = True)
